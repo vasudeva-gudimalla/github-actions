@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id "org.sonarqube" version "3.3"
 }
 
 group 'com.example'
@@ -17,4 +18,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.2'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "vasudeva-gudimalla_github-actions"
+    property "sonar.organization", "vasudeva-gudimalla"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
