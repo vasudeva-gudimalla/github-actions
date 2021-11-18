@@ -43,6 +43,12 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: name/app
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -63,4 +69,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: java-app/latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
